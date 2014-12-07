@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rKD-tg-IBC">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--PDF Documents-->
+        <scene sceneID="fpP-4M-1k1">
+            <objects>
+                <tableViewController id="YpP-xE-fG1" customClass="CNWLibraryViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="OFR-np-5kC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PDFCell" textLabel="EPB-H5-3cd" style="IBUITableViewCellStyleDefault" id="sMd-5t-nyQ">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sMd-5t-nyQ" id="Hwi-bY-hZf">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EPB-H5-3cd">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="show" identifier="ShowReaderViewController" id="vFW-6I-HHk"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YpP-xE-fG1" id="o3N-Mi-Fer"/>
+                            <outlet property="delegate" destination="YpP-xE-fG1" id="YJ0-Bu-a86"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="PDF Documents" id="pqq-oV-z8j"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nF1-5I-vvh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="632" y="480"/>
+        </scene>
+        <!--Reader View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="CNWReaderViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFb-Ap-ljq" customClass="CNWPDFPageView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="WFb-Ap-ljq" secondAttribute="bottom" id="1cJ-7k-H6B"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" secondItem="WFb-Ap-ljq" secondAttribute="height" id="Utd-pK-y7O"/>
+                            <constraint firstAttribute="centerY" secondItem="WFb-Ap-ljq" secondAttribute="centerY" id="V9t-Gc-NC3"/>
+                            <constraint firstItem="WFb-Ap-ljq" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="dIW-pK-U2V"/>
+                            <constraint firstAttribute="centerX" secondItem="WFb-Ap-ljq" secondAttribute="centerX" id="ecz-i6-XD4"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="WFb-Ap-ljq" secondAttribute="width" id="rJg-zc-8MF"/>
+                            <constraint firstItem="WFb-Ap-ljq" firstAttribute="left" secondItem="kh9-bI-dsS" secondAttribute="left" priority="999" id="wXa-8f-QYh"/>
+                            <constraint firstAttribute="right" secondItem="WFb-Ap-ljq" secondAttribute="right" priority="999" id="yjF-dm-qlm"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="UEc-M2-ixT" appends="YES" id="ndj-2w-QM0"/>
+                        </connections>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="pageView" destination="WFb-Ap-ljq" id="Qar-fF-mbN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="UEc-M2-ixT">
+                    <connections>
+                        <action selector="handleTap:" destination="vXZ-lx-hvc" id="5bR-ca-feg"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1294" y="480"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oYg-8w-hUa">
+            <objects>
+                <navigationController id="rKD-tg-IBC" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NFt-Zh-3XO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="YpP-xE-fG1" kind="relationship" relationship="rootViewController" id="6sh-BC-XqT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sqs-X1-XPN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-29" y="480"/>
+        </scene>
+    </scenes>
+</document>
